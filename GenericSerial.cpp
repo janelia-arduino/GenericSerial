@@ -7,29 +7,13 @@
 // ----------------------------------------------------------------------------
 #include "GenericSerial.h"
 
+
 GenericSerial::GenericSerial()
 {
   serial_ptr_ = NULL;
 }
 
-#ifdef __AVR__
-
-GenericSerial::GenericSerial(HardwareSerial &serial)
-{
-  setSerial(serial);
-}
-
-void GenericSerial::setSerial(HardwareSerial &serial)
-{
-  serial_ptr_ = &serial;
-}
-
-HardwareSerial& GenericSerial::getSerial()
-{
-  return *serial_ptr_;
-}
-
-#elif defined(__PIC32MX__)
+#if defined(__AVR__) || defined(__PIC32MX__)
 
 GenericSerial::GenericSerial(HardwareSerial &serial)
 {

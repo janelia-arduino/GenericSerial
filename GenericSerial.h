@@ -13,20 +13,7 @@
 #include "WProgram.h"
 #endif
 
-#ifdef __AVR__
-
-class GenericSerial
-{
-public:
-  GenericSerial();
-  GenericSerial(HardwareSerial &serial);
-  void setSerial(HardwareSerial &serial);
-  HardwareSerial &getSerial();
-private:
-  HardwareSerial *serial_ptr_;
-};
-
-#elif defined(__PIC32MX__)
+#if defined(__AVR__) || defined(__PIC32MX__)
 
 class GenericSerial
 {
@@ -47,7 +34,7 @@ public:
   GenericSerial();
   GenericSerial(usb_serial_class &serial);
   void setSerial(usb_serial_class &serial);
-  usb_serial_class &getSerial();
+  GenericSerialBase &getSerial();
 private:
   usb_serial_class *serial_ptr_;
 };
