@@ -5,18 +5,27 @@
 
 const int BAUDRATE = 9600;
 GenericSerial generic_serial(Serial);
+GenericSerial1to3 generic_serial3(Serial3);
 
 void setup()
 {
-  generic_serial.getSerial().begin(BAUDRATE);
-  generic_serial.getSerial().flush();
+  generic_serial.begin(BAUDRATE);
+  generic_serial.getStream().flush();
+
+  generic_serial3.begin(BAUDRATE);
+  generic_serial3.getStream().flush();
+
   delay(1000);
 }
 
 
 void loop()
 {
-  generic_serial.getSerial().println("Hello ");
-  generic_serial.getSerial() << "World!" << endl;
-  delay(1000);  // do not print too fast!
+  generic_serial.getStream().println("Hello ");
+  generic_serial.getStream() << "World!" << endl;
+  delay(500);
+
+  generic_serial3.getStream().println("Hello ");
+  generic_serial3.getStream() << "World!" << endl;
+  delay(500);
 }

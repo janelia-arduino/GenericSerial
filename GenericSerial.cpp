@@ -8,9 +8,39 @@
 #include "GenericSerial.h"
 
 
-GenericSerial::GenericSerial()
+GenericSerial1to3::GenericSerial1to3(HardwareSerial &serial)
 {
-  serial_ptr_ = NULL;
+  setSerial(serial);
+}
+
+void GenericSerial1to3::setSerial(HardwareSerial &serial)
+{
+  serial_ptr_ = &serial;
+}
+
+Stream& GenericSerial1to3::getStream()
+{
+  return *serial_ptr_;
+}
+
+void GenericSerial1to3::begin(long baudrate)
+{
+  serial_ptr_->begin(baudrate);
+}
+
+void GenericSerial1to3::end()
+{
+  serial_ptr_->end();
+}
+
+void GenericSerial::begin(long baudrate)
+{
+  serial_ptr_->begin(baudrate);
+}
+
+void GenericSerial::end()
+{
+  serial_ptr_->end();
 }
 
 #if defined(__AVR__) || defined(__PIC32MX__)
@@ -25,7 +55,7 @@ void GenericSerial::setSerial(HardwareSerial &serial)
   serial_ptr_ = &serial;
 }
 
-HardwareSerial& GenericSerial::getSerial()
+Stream& GenericSerial::getStream()
 {
   return *serial_ptr_;
 }
@@ -42,7 +72,7 @@ void GenericSerial::setSerial(usb_serial_class &serial)
   serial_ptr_ = &serial;
 }
 
-usb_serial_class& GenericSerial::getSerial()
+Stream& GenericSerial::getStream()
 {
   return *serial_ptr_;
 }

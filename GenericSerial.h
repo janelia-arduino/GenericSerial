@@ -13,28 +13,50 @@
 #include "WProgram.h"
 #endif
 
-#if defined(__AVR__) || defined(__PIC32MX__)
-
-class GenericSerial
+class GenericSerialBase
 {
 public:
-  GenericSerial();
+  virtual Stream &getStream() = 0;
+  virtual void begin(long baudrate);
+  virtual void end();
+};
+
+class GenericSerial1to3 : public GenericSerialBase
+{
+public:
+  GenericSerial1to3(HardwareSerial &serial);
+  void setSerial(HardwareSerial &serial);
+  Stream &getStream();
+  void begin(long baudrate);
+  void end();
+private:
+  HardwareSerial *serial_ptr_;
+};
+
+#if defined(__AVR__) || defined(__PIC32MX__)
+
+class GenericSerial : public GenericSerialBase
+{
+public:
   GenericSerial(HardwareSerial &serial);
   void setSerial(HardwareSerial &serial);
-  HardwareSerial &getSerial();
+  Stream &getStream();
+  void begin(long baudrate);
+  void end();
 private:
   HardwareSerial *serial_ptr_;
 };
 
 #else
 
-class GenericSerial
+class GenericSerial : public GenericSerialBase
 {
 public:
-  GenericSerial();
   GenericSerial(usb_serial_class &serial);
   void setSerial(usb_serial_class &serial);
-  GenericSerialBase &getSerial();
+  Stream &getStream();
+  void begin(long baudrate);
+  void end();
 private:
   usb_serial_class *serial_ptr_;
 };

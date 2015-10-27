@@ -10,15 +10,15 @@ Server server(generic_serial);
 
 void setup()
 {
-  server.generic_serial_.getSerial().begin(BAUDRATE);
-  server.generic_serial_.getSerial().flush();
+  server.begin(BAUDRATE);
+  server.getStream().flush();
   delay(1000);
 }
 
 
 void loop()
 {
-  server.generic_serial_.getSerial().println("Hello ");
-  server.generic_serial_.getSerial() << "World!" << endl;
-  delay(1000);  // do not print too fast!
+  server.getStream().println("Hello ");
+  server.getStream() << "World!" << endl;
+  delay(500);
 }

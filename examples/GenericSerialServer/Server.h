@@ -12,9 +12,12 @@
 class Server
 {
 public:
-  Server(GenericSerial &serial);
-  void setSerial(GenericSerial &serial);
-  GenericSerial generic_serial_;
+  Server(GenericSerialBase &serial);
+  void setSerial(GenericSerialBase &serial);
+  void begin(long baudrate);
+  Stream &getStream();
+private:
+  GenericSerialBase *generic_serial_ptr_;
 };
 
 #endif
