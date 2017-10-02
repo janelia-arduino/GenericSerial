@@ -1,10 +1,10 @@
-#include "Arduino.h"
-#include "Streaming.h"
-#include "Array.h"
-#include "GenericSerial.h"
+#include <Arduino.h>
+#include <Streaming.h>
+#include <Array.h>
+#include <GenericSerial.h>
 
 
-const int BAUDRATE = 9600;
+const long BAUDRATE = 115200;
 GenericSerial generic_serial(Serial);
 GenericSerial1to3 generic_serial3(Serial3);
 const int SERIAL_COUNT = 2;
