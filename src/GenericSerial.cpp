@@ -23,9 +23,9 @@ Stream& GenericSerial1to3::getStream()
   return *serial_ptr_;
 }
 
-void GenericSerial1to3::begin(long baudrate)
+void GenericSerial1to3::begin(long baud)
 {
-  serial_ptr_->begin(baudrate);
+  serial_ptr_->begin(baud);
 }
 
 void GenericSerial1to3::end()
@@ -33,9 +33,9 @@ void GenericSerial1to3::end()
   serial_ptr_->end();
 }
 
-void GenericSerial::begin(long baudrate)
+void GenericSerial::begin(long baud)
 {
-  serial_ptr_->begin(baudrate);
+  serial_ptr_->begin(baud);
 }
 
 void GenericSerial::end()

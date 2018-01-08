@@ -3,16 +3,16 @@
 #include <GenericSerial.h>
 
 
-const long BAUDRATE = 115200;
+const long BAUD = 115200;
 GenericSerial generic_serial(Serial);
 GenericSerial1to3 generic_serial3(Serial3);
 
 void setup()
 {
-  generic_serial.begin(BAUDRATE);
+  generic_serial.begin(BAUD);
   generic_serial.getStream().flush();
 
-  generic_serial3.begin(BAUDRATE);
+  generic_serial3.begin(BAUD);
   generic_serial3.getStream().flush();
 
   delay(1000);

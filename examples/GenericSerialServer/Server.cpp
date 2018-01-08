@@ -18,9 +18,9 @@ void Server::setSerial(GenericSerialBase &serial)
   generic_serial_ptr_ = &serial;
 }
 
-void Server::begin(long baudrate)
+void Server::begin(long baud)
 {
-  generic_serial_ptr_->begin(baudrate);
+  generic_serial_ptr_->begin(baud);
 }
 
 Stream& Server::getStream()

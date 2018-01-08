@@ -4,7 +4,7 @@
 #include <GenericSerial.h>
 
 
-const long BAUDRATE = 115200;
+const long BAUD = 115200;
 GenericSerial generic_serial(Serial);
 GenericSerial1to3 generic_serial3(Serial3);
 const int SERIAL_COUNT = 2;
@@ -17,7 +17,7 @@ void setup()
 
   for (unsigned int i = 0;i<serial_ptr_array.size();++i)
   {
-    serial_ptr_array[i]->begin(BAUDRATE);
+    serial_ptr_array[i]->begin(BAUD);
     serial_ptr_array[i]->getStream().flush();
   }
 

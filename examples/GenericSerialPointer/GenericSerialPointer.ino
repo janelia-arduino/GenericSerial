@@ -3,7 +3,7 @@
 #include <GenericSerial.h>
 
 
-const long BAUDRATE = 115200;
+const long BAUD = 115200;
 GenericSerial generic_serial(Serial);
 GenericSerial1to3 generic_serial3(Serial3);
 GenericSerialBase* generic_serial_ptr;
@@ -14,10 +14,10 @@ void setup()
   generic_serial_ptr = &generic_serial;
   generic_serial3_ptr = &generic_serial3;
 
-  generic_serial_ptr->begin(BAUDRATE);
+  generic_serial_ptr->begin(BAUD);
   generic_serial_ptr->getStream().flush();
 
-  generic_serial3_ptr->begin(BAUDRATE);
+  generic_serial3_ptr->begin(BAUD);
   generic_serial3_ptr->getStream().flush();
 
   delay(1000);

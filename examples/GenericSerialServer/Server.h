@@ -15,7 +15,7 @@ class Server
 public:
   Server(GenericSerialBase &serial);
   void setSerial(GenericSerialBase &serial);
-  void begin(long baudrate);
+  void begin(long baud);
   Stream &getStream();
 private:
   GenericSerialBase *generic_serial_ptr_;

@@ -13,7 +13,7 @@ class GenericSerialBase
 {
 public:
   virtual Stream &getStream() = 0;
-  virtual void begin(long baudrate);
+  virtual void begin(long baud);
   virtual void end();
 };
 
@@ -23,7 +23,7 @@ public:
   GenericSerial1to3(HardwareSerial &serial);
   void setSerial(HardwareSerial &serial);
   Stream &getStream();
-  void begin(long baudrate);
+  void begin(long baud);
   void end();
 private:
   HardwareSerial *serial_ptr_;
@@ -37,7 +37,7 @@ public:
   GenericSerial(HardwareSerial &serial);
   void setSerial(HardwareSerial &serial);
   Stream &getStream();
-  void begin(long baudrate);
+  void begin(long baud);
   void end();
 private:
   HardwareSerial *serial_ptr_;
@@ -51,7 +51,7 @@ public:
   GenericSerial(usb_serial_class &serial);
   void setSerial(usb_serial_class &serial);
   Stream &getStream();
-  void begin(long baudrate);
+  void begin(long baud);
   void end();
 private:
   usb_serial_class *serial_ptr_;

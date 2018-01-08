@@ -5,13 +5,13 @@
 #include "Server.h"
 
 
-const long BAUDRATE = 115200;
+const long BAUD = 115200;
 GenericSerial generic_serial(Serial);
 Server server(generic_serial);
 
 void setup()
 {
-  server.begin(BAUDRATE);
+  server.begin(BAUD);
   server.getStream().flush();
   delay(1000);
 }
